@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val sharedPreferences = this.getSharedPreferences(LoginActivity.FILENAME, Context.MODE_PRIVATE)
-        binding.tvToken.text = sharedPreferences.getString("token","default")
+        binding.tvToken.text = "Token : ${sharedPreferences.getString("token","default")}"
         val token = sharedPreferences.getString("token", "default_email")
         auth(token)
 
@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
                 when (response.code()) {
                     200 -> {
                         binding.pbLoading.visibility = View.GONE
-                        binding.tvEmail.text = body?.data?.email
-                        binding.tvID.text = body?.data?._id
-                        binding.tvUsername.text = body?.data?.username
+                        binding.tvEmail.text = "Email : ${body?.data?.email}"
+                        binding.tvID.text = "ID : ${body?.data?.email}"
+                        binding.tvUsername.text = "Username : ${body?.data?.email}"
                     }
                     else -> {
                         binding.pbLoading.visibility = View.GONE
