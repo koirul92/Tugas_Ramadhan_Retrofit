@@ -60,6 +60,11 @@ class LoginActivity : AppCompatActivity() {
                         binding.pbLoading.visibility = View.GONE
                         Toast.makeText(this@LoginActivity, "Login Berhasil!", Toast.LENGTH_SHORT).show()
                         val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                        editor.putString("token", body?.data?.token)
+                        editor.putString("id", body?.data?.id)
+                        editor.putString("username", body?.data?.username)
+                        editor.putString("email", body?.data?.email)
+                        editor.apply()
                         if (body != null) {
                         }
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
